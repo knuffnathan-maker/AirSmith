@@ -30,9 +30,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AirSmith — Airsoft Gun Builder",
+  title: "AirSmith — Holographic Airsoft Mod Bench",
   description:
-    "Configure and visualize custom airsoft builds. Platform selector, parts library, and live build summary.",
+    "Configure and visualize custom airsoft builds. Sign up for early access to the holographic 3D mod bench.",
 };
 
 export default function RootLayout({
@@ -45,7 +45,7 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${rajdhani.variable} ${orbitron.variable} ${geistMono.variable} dark h-full antialiased`}
     >
-      <body className="h-full overflow-hidden">{children}</body>
+      <body className="min-h-full">{children}</body>
     </html>
   );
 }
