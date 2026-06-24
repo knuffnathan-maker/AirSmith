@@ -1,5 +1,7 @@
 "use client";
 
+import { useCallback, useRef, useState } from "react";
+import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Grid3x3,
@@ -9,8 +11,8 @@ import {
   ZoomIn,
   ZoomOut,
 } from "lucide-react";
+import type { OrbitControls as OrbitControlsImpl } from "three-stdlib";
 
-import { AssemblyViewport } from "@/components/assembly-viewport";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CATEGORY_LABELS } from "@/lib/mock-data";
@@ -19,20 +21,46 @@ import type { BuildPart } from "@/lib/types";
 import { useBuildStore } from "@/stores/build-store";
 import { cn } from "@/lib/utils";
 
-const VIEWER_CONTROLS = [
-  { icon: Grid3x3, title: "Toggle grid" },
-  { icon: RotateCcw, title: "Reset view" },
-  { icon: ZoomIn, title: "Zoom in" },
-  { icon: ZoomOut, title: "Zoom out" },
-  { icon: Maximize2, title: "Fullscreen" },
-] as const;
+const AssemblyCanvas = dynamic(
+  () =>
+    import("@/components/viewer/assembly-canvas").then((m) => ({
+      default: m.AssemblyCanvas,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="flex size-full items-center justify-center bg-charcoal-deep">
+        <p className={holo.monoMeta}>INITIALIZING VIEWPORT...</p>
+      </div>
+    ),
+  }
+);
 
 export function ViewerArea() {
   const platformId = useBuildStore((s) => s.platformId);
   const parts = useBuildStore((s) => s.parts);
   const removePart = useBuildStore((s) => s.removePart);
 
+  const controlsRef = useRef<OrbitControlsImpl | null>(null);
+  const [showGrid, setShowGrid] = useState(true);
+
   const platformLabel = platformId === "aap-01" ? "AAP-01" : "Hi-Capa";
+
+  const handleControlsReady = useCallback((controls: OrbitControlsImpl | null) => {
+    controlsRef.current = controls;
+  }, []);
+
+  const handleReset = () => {
+    controlsRef.current?.reset();
+  };
+
+  const handleZoom = (direction: "in" | "out") => {
+    const controls = controlsRef.current;
+    if (!controls) return;
+    const factor = direction === "in" ? 0.82 : 1.22;
+    controls.object.position.multiplyScalar(factor);
+    controls.update();
+  };
 
   return (
     <main className="relative flex min-w-0 flex-1 flex-col">
@@ -47,57 +75,79 @@ export function ViewerArea() {
           </span>
         </div>
         <div className="flex items-center gap-0.5">
-          {VIEWER_CONTROLS.map(({ icon: Icon, title }) => (
-            <Button key={title} variant="ghost" size="icon-sm" title={title} className={holo.iconBtn}>
-              <Icon />
-            </Button>
-          ))}
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            title="Toggle grid"
+            className={cn(holo.iconBtn, showGrid && "text-sage-light")}
+            onClick={() => setShowGrid((v) => !v)}
+          >
+            <Grid3x3 />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            title="Reset view"
+            className={holo.iconBtn}
+            onClick={handleReset}
+          >
+            <RotateCcw />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            title="Zoom in"
+            className={holo.iconBtn}
+            onClick={() => handleZoom("in")}
+          >
+            <ZoomIn />
+          </Button>
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            title="Zoom out"
+            className={holo.iconBtn}
+            onClick={() => handleZoom("out")}
+          >
+            <ZoomOut />
+          </Button>
+          <Button variant="ghost" size="icon-sm" title="Fullscreen" className={holo.iconBtn}>
+            <Maximize2 />
+          </Button>
         </div>
       </div>
 
-      <div className="relative flex flex-1 flex-col overflow-hidden bg-charcoal-deep">
-        <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-5 p-6">
-          <AssemblyViewport partCount={parts.length} />
+      <div className="relative min-h-0 flex-1 overflow-hidden bg-charcoal-deep">
+        <AssemblyCanvas
+          parts={parts}
+          showGrid={showGrid}
+          onControlsReady={handleControlsReady}
+          className="absolute inset-0"
+        />
+      </div>
 
-          <div className="text-center">
-            <p className={holo.accentHeading}>3D Assembly Viewer</p>
-            <p className={cn("mt-1.5 max-w-sm", holo.bodyMutedSmall)}>
-              {parts.length === 0
-                ? "Select components from the parts library to begin assembly."
-                : "Meshes loaded. Inspect dimensions and fitment in the viewport."}
-            </p>
-          </div>
-
-          <div className={cn("flex gap-5 uppercase", holo.monoMeta)}>
-            <span>Orbit: LMB</span>
-            <span className="text-charcoal-border-light">|</span>
-            <span>Pan: MMB</span>
-            <span className="text-charcoal-border-light">|</span>
-            <span>Zoom: Scroll</span>
-          </div>
-        </div>
-
-        <div className={cn("relative z-10 border-t px-4 py-3", holo.panel)}>
-          <div className="absolute inset-x-0 top-0 panel-divider" />
-          <p className={cn("mb-2", holo.sectionLabel)}>
-            <span className="text-steel">{"// "}</span>Loaded Components
+      <div className={cn("relative shrink-0 border-t px-4 py-3", holo.panel)}>
+        <div className="absolute inset-x-0 top-0 panel-divider" />
+        <p className={cn("mb-2", holo.sectionLabel)}>
+          <span className="text-steel">{"// "}</span>Loaded Components
+        </p>
+        {parts.length === 0 ? (
+          <p className={cn(holo.monoMeta, "text-steel/60")}>
+            AWAITING INPUT — add parts to load meshes into the viewport
           </p>
-          {parts.length === 0 ? (
-            <p className={cn(holo.monoMeta, "text-steel/60")}>AWAITING INPUT...</p>
-          ) : (
-            <div className="flex flex-wrap gap-2">
-              <AnimatePresence mode="popLayout">
-                {parts.map((part) => (
-                  <AssemblyPartChip
-                    key={part.slotId}
-                    part={part}
-                    onRemove={() => removePart(part.slotId)}
-                  />
-                ))}
-              </AnimatePresence>
-            </div>
-          )}
-        </div>
+        ) : (
+          <div className="flex flex-wrap gap-2">
+            <AnimatePresence mode="popLayout">
+              {parts.map((part) => (
+                <AssemblyPartChip
+                  key={part.slotId}
+                  part={part}
+                  onRemove={() => removePart(part.slotId)}
+                />
+              ))}
+            </AnimatePresence>
+          </div>
+        )}
       </div>
     </main>
   );

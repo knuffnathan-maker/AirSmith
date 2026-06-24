@@ -18,7 +18,7 @@ export const PARTS_CATALOG: Part[] = [
     id: "aap-frame-01",
     name: "CNC Aluminum Frame",
     category: "frame",
-    stl_url: "/models/aap-01/frame-01.stl",
+    stl_url: "/models/placeholder-pistol.stl",
     estimated_price: 189.99,
     durability_note: "CNC aluminum — high cycle life, resists frame cracking",
     compatibility: ["aap-01"],

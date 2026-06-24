@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { DollarSign, Gauge, Package, Shield, Trash2, Zap } from "lucide-react";
+import { DollarSign, Gauge, Package, Shield, Trash2, Zap, type LucideIcon } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -19,7 +19,7 @@ function StatRow({
   unit,
   accent = "sage",
 }: {
-  icon: React.ElementType;
+  icon: LucideIcon;
   label: string;
   value: string | number;
   unit?: string;
