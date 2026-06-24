@@ -1,11 +1,10 @@
 "use client";
 
-import { Loader2, Mail, Send } from "lucide-react";
+import { Loader2, Send } from "lucide-react";
 import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
-import { holo } from "@/lib/holo-styles";
 import { cn } from "@/lib/utils";
 
 type LandingSignInProps = {
@@ -51,33 +50,30 @@ export function LandingSignIn({ authError }: LandingSignInProps) {
 
   if (status === "sent") {
     return (
-      <div className={cn("tactical-card rounded-sm p-6 text-center", holo.panel)}>
-        <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-sm border border-matte-border-light bg-matte-raised">
-          <Mail className="size-5 text-olive-bright" />
-        </div>
-        <p className={holo.accentHeading}>Check your inbox</p>
-        <p className={cn("mt-3", holo.bodyMuted)}>
+      <div className="rounded-lg border border-charcoal-border-light bg-charcoal-panel p-6 text-center">
+        <p className="font-heading text-sm font-bold tracking-wide text-sage-light uppercase">
+          Check your inbox
+        </p>
+        <p className="mt-3 text-sm leading-relaxed text-steel-light">
           We sent a sign-in link to{" "}
-          <span className="font-medium text-olive-bright">{email}</span>. Click it to
-          confirm your spot — you&apos;ll land back here with a thank-you note.
+          <span className="font-medium text-foreground">{email}</span>. Click it
+          to confirm your spot.
         </p>
       </div>
     );
   }
 
   return (
-    <div className={cn("tactical-card rounded-sm p-6", holo.panel)}>
-      <p className={holo.sectionLabel}>// Early access</p>
-      <h2 className="mt-2 font-heading text-xl font-bold tracking-tight text-foreground">
-        Want to participate?
-      </h2>
-      <p className={cn("mt-2", holo.bodyMuted)}>
-        Sign in with your email to register interest. No password — we&apos;ll
-        send you a one-time link.
+    <div className="rounded-lg border border-charcoal-border-light bg-charcoal-panel p-6 sm:p-8">
+      <h3 className="font-heading text-lg font-bold text-foreground">
+        Sign in with email
+      </h3>
+      <p className="mt-2 text-sm text-steel-light">
+        No password required. We&apos;ll send a one-time link.
       </p>
 
       {authError && (
-        <p className="mt-4 rounded-sm border border-destructive/30 bg-destructive/10 px-3 py-2 text-xs text-destructive">
+        <p className="mt-4 rounded border border-destructive/30 bg-destructive/10 px-3 py-2 text-xs text-destructive">
           Sign-in link expired or was invalid. Request a new one below.
         </p>
       )}
@@ -96,9 +92,9 @@ export function LandingSignIn({ authError }: LandingSignInProps) {
           onChange={(e) => setEmail(e.target.value)}
           disabled={status === "loading"}
           className={cn(
-            "w-full rounded-sm border border-matte-border bg-matte-raised px-4 py-2.5",
-            "font-sans text-sm text-foreground placeholder:text-muted-foreground",
-            "transition-colors focus:border-olive-dim focus:outline-none focus:ring-1 focus:ring-olive-dim/40",
+            "w-full rounded border border-charcoal-border bg-charcoal-raised px-4 py-3",
+            "text-sm text-foreground placeholder:text-steel",
+            "transition-colors focus:border-accent-blue/50 focus:outline-none focus:ring-1 focus:ring-accent-blue/30",
             "disabled:opacity-50"
           )}
         />
@@ -106,14 +102,17 @@ export function LandingSignIn({ authError }: LandingSignInProps) {
           type="submit"
           size="lg"
           disabled={status === "loading" || !email.trim()}
-          className={cn("w-full", holo.primaryBtn)}
+          className={cn(
+            "h-11 w-full rounded border border-sage-dim/50 bg-sage-dim/25",
+            "font-semibold text-sage-light hover:bg-sage-dim/35"
+          )}
         >
           {status === "loading" ? (
             <Loader2 className="animate-spin" />
           ) : (
             <Send />
           )}
-          Sign in here
+          Get early access
         </Button>
       </form>
 

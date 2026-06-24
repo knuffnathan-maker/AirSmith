@@ -26,6 +26,28 @@ const config: Config = {
           bright: "#7a8f5a",
           muted: "#6b7555",
         },
+        charcoal: {
+          black: "#0a0b0a",
+          void: "#0c0d0c",
+          panel: "#121413",
+          raised: "#181a18",
+          border: "#252826",
+          "border-light": "#333633",
+        },
+        sage: {
+          DEFAULT: "#6d7564",
+          light: "#8a9480",
+          dim: "#565e50",
+        },
+        steel: {
+          DEFAULT: "#7a8289",
+          dim: "#4a5056",
+          light: "#9aa3ab",
+        },
+        accent: {
+          blue: "#5c7a94",
+          "blue-dim": "#4a6278",
+        },
         tactical: {
           gray: "#8a8f85",
           "gray-dim": "#5c5f58",

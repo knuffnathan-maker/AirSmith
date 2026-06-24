@@ -6,7 +6,6 @@ import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 import { createClient } from "@/lib/supabase/client";
-import { holo } from "@/lib/holo-styles";
 import { cn } from "@/lib/utils";
 
 type LandingThankYouProps = {
@@ -23,28 +22,25 @@ export function LandingThankYou({ email }: LandingThankYouProps) {
   }
 
   return (
-    <div className={cn("tactical-card rounded-sm p-6", holo.panel)}>
+    <div className="rounded-lg border border-charcoal-border-light bg-charcoal-panel p-6 sm:p-8">
       <div className="flex items-start gap-4">
-        <div className="flex size-12 shrink-0 items-center justify-center rounded-sm border border-olive-dim/50 bg-olive-deep/20">
-          <CheckCircle2 className="size-6 text-olive-bright" />
+        <div className="flex size-11 shrink-0 items-center justify-center rounded border border-sage-dim/40 bg-sage-dim/15">
+          <CheckCircle2 className="size-5 text-sage-light" />
         </div>
         <div className="min-w-0 flex-1">
-          <p className={holo.sectionLabel}>// You&apos;re on the list</p>
-          <h2 className="mt-1 font-heading text-xl font-bold tracking-tight text-foreground">
+          <h3 className="font-heading text-lg font-bold text-foreground">
             Thank you for signing up
-          </h2>
-          <p className={cn("mt-3", holo.bodyMuted)}>
+          </h3>
+          <p className="mt-2 text-sm leading-relaxed text-steel-light">
             Your registration at{" "}
-            <span className="font-medium text-olive-bright">{email}</span> is recorded.
-            That single step tells me who would{" "}
-            <span className="text-foreground">really</span> want a tactical airsoft
-            mod bench — not just curious clicks, but people willing to put their name
-            on it.
+            <span className="font-medium text-foreground">{email}</span> is
+            recorded. That tells me who would{" "}
+            <span className="text-foreground">really</span> want a professional
+            airsoft mod bench.
           </p>
-          <p className={cn("mt-3", holo.bodyMutedSmall)}>
+          <p className="mt-2 text-xs leading-relaxed text-steel">
             I use this list to prioritize features, gauge demand, and reach out
-            when the builder opens up. You&apos;re helping shape what AirSmith
-            becomes.
+            when the builder opens up.
           </p>
         </div>
       </div>
@@ -53,11 +49,12 @@ export function LandingThankYou({ email }: LandingThankYouProps) {
         <Link
           href="/builder"
           className={cn(
-            "inline-flex h-7 items-center gap-1 rounded-sm px-2.5 text-[0.8rem]",
-            holo.primaryBtn
+            "inline-flex h-10 items-center gap-2 rounded border border-sage-dim/50",
+            "bg-sage-dim/25 px-4 text-sm font-semibold text-sage-light",
+            "transition-colors hover:bg-sage-dim/35"
           )}
         >
-          <Wrench className="size-3.5" />
+          <Wrench className="size-4" />
           Open the prototype
         </Link>
         <Button
@@ -65,7 +62,7 @@ export function LandingThankYou({ email }: LandingThankYouProps) {
           variant="ghost"
           size="sm"
           onClick={handleSignOut}
-          className={holo.iconBtn}
+          className="text-steel hover:text-foreground"
         >
           <LogOut />
           Sign out

@@ -23,9 +23,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AirSmith — Tactical Airsoft Mod Bench",
+  title: "AirSmith — Build Better Airsoft Guns",
   description:
-    "Configure and visualize custom airsoft builds. Sign up for early access to the tactical 3D mod bench.",
+    "The realistic PC-first virtual mod bench. Configure parts, test compatibility, calculate costs, and visualize builds in accurate 3D.",
 };
 
 export default function RootLayout({
