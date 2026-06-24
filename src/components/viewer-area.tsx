@@ -1,10 +1,9 @@
 "use client";
 
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 import dynamic from "next/dynamic";
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  Grid3x3,
   Maximize2,
   RotateCcw,
   Trash2,
@@ -42,7 +41,6 @@ export function ViewerArea() {
   const removePart = useBuildStore((s) => s.removePart);
 
   const controlsRef = useRef<OrbitControlsImpl | null>(null);
-  const [showGrid, setShowGrid] = useState(true);
 
   const platformLabel = platformId === "aap-01" ? "AAP-01" : "Hi-Capa";
 
@@ -64,7 +62,12 @@ export function ViewerArea() {
 
   return (
     <main className="relative flex min-w-0 flex-1 flex-col">
-      <div className={cn("relative flex items-center justify-between border-b px-4 py-2", holo.panel)}>
+      <div
+        className={cn(
+          "relative flex items-center justify-between border-b px-4 py-2",
+          holo.glassSidebar
+        )}
+      >
         <div className="absolute inset-x-0 bottom-0 panel-divider" />
         <div className="flex items-center gap-2">
           <Badge variant="outline" className={cn("text-[10px] tracking-wider uppercase", holo.badge)}>
@@ -75,15 +78,6 @@ export function ViewerArea() {
           </span>
         </div>
         <div className="flex items-center gap-0.5">
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            title="Toggle grid"
-            className={cn(holo.iconBtn, showGrid && "text-sage-light")}
-            onClick={() => setShowGrid((v) => !v)}
-          >
-            <Grid3x3 />
-          </Button>
           <Button
             variant="ghost"
             size="icon-sm"
@@ -117,16 +111,15 @@ export function ViewerArea() {
         </div>
       </div>
 
-      <div className="relative min-h-0 flex-1 overflow-hidden bg-charcoal-deep">
+      <div className="relative min-h-0 flex-1 overflow-hidden">
         <AssemblyCanvas
           parts={parts}
-          showGrid={showGrid}
           onControlsReady={handleControlsReady}
           className="absolute inset-0"
         />
       </div>
 
-      <div className={cn("relative shrink-0 border-t px-4 py-3", holo.panel)}>
+      <div className={cn("relative shrink-0 border-t px-4 py-3", holo.glassSidebar)}>
         <div className="absolute inset-x-0 top-0 panel-divider" />
         <p className={cn("mb-2", holo.sectionLabel)}>
           <span className="text-steel">{"// "}</span>Loaded Components

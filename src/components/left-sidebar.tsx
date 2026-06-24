@@ -30,8 +30,12 @@ export function LeftSidebar() {
   const categories = [...new Set(catalogParts.map((p) => p.category))];
 
   return (
-    <aside className={cn("relative flex w-72 shrink-0 flex-col border-r", holo.panel)}>
-      <div className={holo.panelEdgeRight} />
+    <aside
+      className={cn(
+        "relative flex w-72 shrink-0 flex-col border-r",
+        holo.glassSidebar
+      )}
+    >
       <PlatformSelector />
       <div className="mx-4 panel-divider" />
 
@@ -39,24 +43,27 @@ export function LeftSidebar() {
         <p className={holo.sectionLabel}>
           <span className="text-steel">{"// "}</span>Parts Library
         </p>
-        <Badge variant="secondary" className={cn("text-[10px] font-normal", holo.badgeMuted)}>
+        <Badge
+          variant="secondary"
+          className="border-0 bg-white/[0.06] text-[10px] font-normal text-steel"
+        >
           {loading ? "..." : `${catalogParts.length} parts`}
         </Badge>
       </div>
 
-      <ScrollArea className="flex-1 px-2 pb-4">
+      <ScrollArea className="flex-1 px-3 pb-4">
         {loading ? (
           <p className={cn("px-4 py-6 text-center", holo.caption)}>Loading catalog...</p>
         ) : error ? (
           <p className="px-4 py-6 text-center text-xs text-destructive">{error}</p>
         ) : (
-          <div className="space-y-4 px-2">
+          <div className="space-y-4 px-1">
             {categories.map((category) => (
               <div key={category}>
                 <p className={cn("mb-2 px-1", holo.categoryLabel)}>
                   {CATEGORY_LABELS[category]}
                 </p>
-                <div className="space-y-1.5">
+                <div className="space-y-0.5">
                   {catalogParts
                     .filter((p) => p.category === category)
                     .map((part) => (
@@ -100,14 +107,14 @@ function PartCard({
       whileTap={inBuild ? undefined : "tap"}
       transition={holoSpring}
       className={cn(
-        "group relative flex w-full items-start gap-2 overflow-hidden rounded-sm border px-3 py-2.5 text-left",
+        "group relative flex w-full items-start gap-2 rounded-sm px-3 py-2.5 text-left transition-colors",
         inBuild
-          ? "cursor-default border-sage-dim/40 bg-sage-dim/10"
-          : cn(holo.card, "cursor-pointer border-charcoal-border", holo.cardHover)
+          ? "cursor-default bg-sage-dim/10"
+          : "cursor-pointer hover:bg-white/[0.05] active:bg-white/[0.03]"
       )}
     >
       {!inBuild && (
-        <span className="absolute inset-y-0 left-0 w-0.5 scale-y-0 bg-sage-light transition-transform duration-150 group-hover:scale-y-100" />
+        <span className="absolute inset-y-1 left-0 w-0.5 scale-y-0 rounded-full bg-sage-light transition-transform duration-150 group-hover:scale-y-100" />
       )}
       <div className="min-w-0 flex-1">
         <p className="truncate font-heading text-xs font-semibold tracking-wide text-foreground">
@@ -118,13 +125,13 @@ function PartCard({
       </div>
       <span
         className={cn(
-          "flex size-6 shrink-0 items-center justify-center rounded-sm border transition-colors duration-150",
+          "flex size-6 shrink-0 items-center justify-center rounded-sm transition-colors duration-150",
           inBuild
-            ? "border-sage-dim/40 bg-sage-dim/15 text-sage-light"
-            : "border-charcoal-border bg-charcoal-raised text-steel group-hover:border-sage-dim/40 group-hover:text-sage-light"
+            ? "text-sage-light"
+            : "text-steel group-hover:text-sage-light"
         )}
       >
-        {inBuild ? <Check className="size-3" /> : <Plus className="size-3" />}
+        {inBuild ? <Check className="size-3.5" /> : <Plus className="size-3.5" />}
       </span>
     </motion.button>
   );

@@ -40,4 +40,8 @@ export interface BuildStats {
   partCount: number;
   estimatedFps: number;
   compatibility: number;
+  control: number;
+  handling: number;
+  accuracy: number;
+  range: number;
 }

@@ -7,13 +7,12 @@ import { ViewerArea } from "@/components/viewer-area";
 
 export function AirSmithApp() {
   return (
-    <div className="relative flex h-screen flex-col overflow-hidden bg-charcoal-void">
-      <div className="pointer-events-none absolute inset-0 bg-tactical-bg" />
-      <div className="pointer-events-none absolute inset-0 hud-grid opacity-20" />
+    <div className="relative flex h-screen flex-col overflow-hidden bg-[#0c0d0f]">
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-[#141618] via-[#0c0d0f] to-[#0a0b0a]" />
 
       <div className="relative z-10 flex h-full flex-col">
         <Navbar />
-        <div className="flex min-h-0 flex-1">
+        <div className="flex min-h-0 flex-1 overflow-visible pt-14">
           <LeftSidebar />
           <ViewerArea />
           <BuildSummary />

@@ -44,8 +44,10 @@ export function PlatformSelector() {
               whileTap="tap"
               transition={holoSpring}
               className={cn(
-                "relative overflow-hidden rounded-sm border px-3 py-2.5 text-left",
-                isActive ? holo.cardActive : cn(holo.card, "border-charcoal-border")
+                "relative overflow-hidden rounded-sm px-3 py-2.5 text-left transition-colors",
+                isActive
+                  ? "bg-sage-dim/15"
+                  : "bg-white/[0.03] hover:bg-white/[0.06]"
               )}
             >
               {isActive && (

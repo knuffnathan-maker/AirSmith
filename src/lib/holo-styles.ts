@@ -24,6 +24,10 @@ export const holo = {
     "font-heading text-sm font-bold tracking-[0.12em] text-sage-light uppercase",
   sandAccent: "font-heading text-steel-light font-semibold",
 
+  /** Delta Force gunsmith glass sidebars */
+  glassSidebar:
+    "bg-[rgba(22,24,28,0.45)] backdrop-blur-xl backdrop-saturate-150 border-charcoal-border/40",
+
   panel: "tactical-panel border-charcoal-border",
   panelEdgeRight: "absolute inset-y-0 right-0 w-px bg-charcoal-border-light/50",
   panelEdgeLeft: "absolute inset-y-0 left-0 w-px bg-charcoal-border-light/50",
