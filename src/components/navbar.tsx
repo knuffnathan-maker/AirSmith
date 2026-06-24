@@ -15,13 +15,13 @@ export function Navbar() {
       <div className="absolute inset-x-0 bottom-0 panel-divider" />
 
       <div className="flex items-center gap-4">
-        <div className="flex size-9 items-center justify-center rounded-sm border border-matte-border-light bg-matte-raised">
-          <Crosshair className="size-4 text-olive-bright" strokeWidth={2} />
+        <div className="flex size-9 items-center justify-center rounded-sm border border-charcoal-border-light bg-charcoal-raised">
+          <Crosshair className="size-4 text-sage-light" strokeWidth={2} />
         </div>
 
         <div className="flex flex-col gap-0.5">
           <h1 className={holo.logo}>AirSmith</h1>
-          <p className={holo.logoSub}>Tactical Mod Bench v0.1</p>
+          <p className={holo.logoSub}>Tactical Mod Bench · v0.1</p>
         </div>
       </div>
 
@@ -30,7 +30,7 @@ export function Navbar() {
           <Share2 />
           Share Build
         </Button>
-        <div className="hidden h-5 w-px bg-matte-border sm:block" />
+        <div className="hidden h-5 w-px bg-charcoal-border sm:block" />
         <Button variant="outline" size="sm" className={holo.outlineBtn}>
           <FileJson />
           Export JSON

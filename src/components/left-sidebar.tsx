@@ -37,7 +37,7 @@ export function LeftSidebar() {
 
       <div className="flex items-center justify-between px-4 pt-4 pb-2">
         <p className={holo.sectionLabel}>
-          <span className="text-tactical-gray">{"// "}</span>Parts Library
+          <span className="text-steel">{"// "}</span>Parts Library
         </p>
         <Badge variant="secondary" className={cn("text-[10px] font-normal", holo.badgeMuted)}>
           {loading ? "..." : `${catalogParts.length} parts`}
@@ -102,12 +102,12 @@ function PartCard({
       className={cn(
         "group relative flex w-full items-start gap-2 overflow-hidden rounded-sm border px-3 py-2.5 text-left",
         inBuild
-          ? "cursor-default border-olive-dim/50 bg-olive-deep/15"
-          : cn(holo.card, "cursor-pointer border-matte-border", holo.cardHover)
+          ? "cursor-default border-sage-dim/40 bg-sage-dim/10"
+          : cn(holo.card, "cursor-pointer border-charcoal-border", holo.cardHover)
       )}
     >
       {!inBuild && (
-        <span className="absolute inset-y-0 left-0 w-0.5 scale-y-0 bg-olive-bright transition-transform duration-200 group-hover:scale-y-100" />
+        <span className="absolute inset-y-0 left-0 w-0.5 scale-y-0 bg-sage-light transition-transform duration-150 group-hover:scale-y-100" />
       )}
       <div className="min-w-0 flex-1">
         <p className="truncate font-heading text-xs font-semibold tracking-wide text-foreground">
@@ -120,8 +120,8 @@ function PartCard({
         className={cn(
           "flex size-6 shrink-0 items-center justify-center rounded-sm border transition-colors duration-150",
           inBuild
-            ? "border-olive-dim/50 bg-olive-deep/30 text-olive-bright"
-            : "border-matte-border bg-matte-raised text-muted-foreground group-hover:border-olive-dim/40 group-hover:text-olive-bright"
+            ? "border-sage-dim/40 bg-sage-dim/15 text-sage-light"
+            : "border-charcoal-border bg-charcoal-raised text-steel group-hover:border-sage-dim/40 group-hover:text-sage-light"
         )}
       >
         {inBuild ? <Check className="size-3" /> : <Plus className="size-3" />}

@@ -21,15 +21,11 @@ export function PlatformSelector() {
   return (
     <div className="p-4">
       <p className={cn("mb-3", holo.sectionLabel)}>
-        <span className="text-tactical-gray">{"// "}</span>Platform Select
+        <span className="text-steel">{"// "}</span>Platform Select
       </p>
 
-      {loading && (
-        <p className={cn("mb-2", holo.caption)}>Syncing platforms...</p>
-      )}
-      {error && (
-        <p className="mb-2 text-xs text-destructive">{error}</p>
-      )}
+      {loading && <p className={cn("mb-2", holo.caption)}>Syncing platforms...</p>}
+      {error && <p className="mb-2 text-xs text-destructive">{error}</p>}
 
       <div className="grid grid-cols-2 gap-2" role="group" aria-label="Select platform">
         {platforms.map((platform) => {
@@ -49,24 +45,22 @@ export function PlatformSelector() {
               transition={holoSpring}
               className={cn(
                 "relative overflow-hidden rounded-sm border px-3 py-2.5 text-left",
-                isActive
-                  ? holo.cardActive
-                  : cn(holo.card, "border-matte-border")
+                isActive ? holo.cardActive : cn(holo.card, "border-charcoal-border")
               )}
             >
               {isActive && (
                 <>
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-olive-bright/40" />
-                  <div className="pointer-events-none absolute inset-y-0 left-0 w-0.5 bg-olive-bright/60" />
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-sage-light/30" />
+                  <div className="pointer-events-none absolute inset-y-0 left-0 w-0.5 bg-sage-light/50" />
                 </>
               )}
               {isActive && (
-                <span className="absolute top-2 right-2 size-1.5 rounded-full bg-olive-bright" />
+                <span className="absolute top-2 right-2 size-1.5 rounded-full bg-sage-light" />
               )}
               <span
                 className={cn(
                   "relative block font-heading text-sm font-bold tracking-wide",
-                  isActive ? "text-olive-bright" : "text-foreground"
+                  isActive ? "text-sage-light" : "text-foreground"
                 )}
               >
                 {platform.name}
@@ -75,7 +69,7 @@ export function PlatformSelector() {
                 className={cn(
                   "relative mt-0.5 block",
                   holo.caption,
-                  isActive ? "text-olive-muted" : holo.bodyDim
+                  isActive ? "text-sage" : holo.bodyDim
                 )}
               >
                 {platform.description}

@@ -97,7 +97,6 @@ export function LandingPage({ user, authError }: LandingPageProps) {
             </div>
 
             <div className="relative">
-              <div className="absolute -inset-4 rounded-2xl bg-accent-blue/5 blur-2xl" />
               <LandingAppPreview large className="relative" />
             </div>
           </div>

@@ -2,7 +2,6 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import {
-  Box,
   Grid3x3,
   Maximize2,
   RotateCcw,
@@ -11,6 +10,7 @@ import {
   ZoomOut,
 } from "lucide-react";
 
+import { AssemblyViewport } from "@/components/assembly-viewport";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { CATEGORY_LABELS } from "@/lib/mock-data";
@@ -46,7 +46,7 @@ export function ViewerArea() {
             [{parts.length}] component{parts.length !== 1 ? "s" : ""} loaded
           </span>
         </div>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-0.5">
           {VIEWER_CONTROLS.map(({ icon: Icon, title }) => (
             <Button key={title} variant="ghost" size="icon-sm" title={title} className={holo.iconBtn}>
               <Icon />
@@ -55,58 +55,35 @@ export function ViewerArea() {
         </div>
       </div>
 
-      <div className="relative flex flex-1 flex-col overflow-hidden bg-matte-deep">
-        <div className="absolute inset-0 hud-grid-fine opacity-50" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,#080907_85%)]" />
+      <div className="relative flex flex-1 flex-col overflow-hidden bg-charcoal-deep">
+        <div className="relative z-10 flex flex-1 flex-col items-center justify-center gap-5 p-6">
+          <AssemblyViewport partCount={parts.length} />
 
-        <div className="relative z-10 flex flex-1 items-center justify-center p-6">
-          <div className="flex flex-col items-center gap-6">
-            <div className="relative">
-              <div className="relative flex size-52 items-center justify-center rounded-sm border border-matte-border-light bg-matte-panel shadow-tactical">
-                <Box className="size-20 text-tactical-steel/60" strokeWidth={0.75} />
-                <div className="pointer-events-none absolute inset-x-4 top-0 h-px bg-matte-border-light/50" />
-              </div>
+          <div className="text-center">
+            <p className={holo.accentHeading}>3D Assembly Viewer</p>
+            <p className={cn("mt-1.5 max-w-sm", holo.bodyMutedSmall)}>
+              {parts.length === 0
+                ? "Select components from the parts library to begin assembly."
+                : "Meshes loaded. Inspect dimensions and fitment in the viewport."}
+            </p>
+          </div>
 
-              {(["tl", "tr", "bl", "br"] as const).map((corner) => (
-                <span
-                  key={corner}
-                  className={cn(
-                    "absolute size-5 hud-corner",
-                    corner === "tl" && "-top-2 -left-2 border-t border-l",
-                    corner === "tr" && "-top-2 -right-2 border-t border-r",
-                    corner === "bl" && "-bottom-2 -left-2 border-b border-l",
-                    corner === "br" && "-right-2 -bottom-2 border-b border-r"
-                  )}
-                />
-              ))}
-            </div>
-
-            <div className="text-center">
-              <p className={holo.accentHeading}>3D Assembly Viewer</p>
-              <p className={cn("mt-1.5 max-w-xs", holo.bodyMutedSmall)}>
-                {parts.length === 0
-                  ? "Select components from the parts library to begin assembly."
-                  : "Components loaded to tray. Render pipeline standing by."}
-              </p>
-            </div>
-
-            <div className={cn("flex gap-6 uppercase", holo.monoMeta)}>
-              <span>Orbit: LMB</span>
-              <span className="text-matte-border-light">|</span>
-              <span>Pan: MMB</span>
-              <span className="text-matte-border-light">|</span>
-              <span>Zoom: Scroll</span>
-            </div>
+          <div className={cn("flex gap-5 uppercase", holo.monoMeta)}>
+            <span>Orbit: LMB</span>
+            <span className="text-charcoal-border-light">|</span>
+            <span>Pan: MMB</span>
+            <span className="text-charcoal-border-light">|</span>
+            <span>Zoom: Scroll</span>
           </div>
         </div>
 
         <div className={cn("relative z-10 border-t px-4 py-3", holo.panel)}>
           <div className="absolute inset-x-0 top-0 panel-divider" />
           <p className={cn("mb-2", holo.sectionLabel)}>
-            <span className="text-tactical-gray">{"// "}</span>Loaded Components
+            <span className="text-steel">{"// "}</span>Loaded Components
           </p>
           {parts.length === 0 ? (
-            <p className={cn(holo.monoMeta, "text-muted-foreground/60")}>AWAITING INPUT...</p>
+            <p className={cn(holo.monoMeta, "text-steel/60")}>AWAITING INPUT...</p>
           ) : (
             <div className="flex flex-wrap gap-2">
               <AnimatePresence mode="popLayout">
@@ -136,18 +113,13 @@ function AssemblyPartChip({
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, scale: 0.95, y: 8 }}
+      initial={{ opacity: 0, scale: 0.98, y: 6 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
-      exit={{
-        opacity: 0,
-        scale: 0.95,
-        x: -16,
-        transition: { duration: 0.2, ease: "easeInOut" },
-      }}
-      transition={{ duration: 0.15, ease: "easeOut" }}
+      exit={{ opacity: 0, scale: 0.98, x: -12, transition: { duration: 0.18 } }}
+      transition={{ duration: 0.14, ease: "easeOut" }}
       className={cn(
-        "group flex items-center gap-2 rounded-sm border border-matte-border py-1.5 pr-1.5 pl-2.5",
-        "bg-matte-raised hover:border-matte-border-light"
+        "group flex items-center gap-2 rounded-sm border border-charcoal-border py-1.5 pr-1.5 pl-2.5",
+        "bg-charcoal-raised hover:border-charcoal-border-light"
       )}
     >
       <div className="min-w-0">
@@ -157,9 +129,7 @@ function AssemblyPartChip({
           </Badge>
           <span className={cn("truncate", holo.title)}>{part.name}</span>
         </div>
-        <span className={holo.accentValue}>
-          ${part.estimated_price.toFixed(2)}
-        </span>
+        <span className={holo.accentValue}>${part.estimated_price.toFixed(2)}</span>
       </div>
       <Button
         variant="ghost"

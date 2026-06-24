@@ -1,57 +1,52 @@
-/** Shared tactical UI class tokens — use with cn() across AirSmith */
+/** Shared tactical UI tokens — grounded military operator software */
 export const holo = {
-  /* ── Typography ── */
-  logo: "font-logo text-[1.35rem] font-bold leading-none tracking-[0.18em] uppercase text-foreground",
+  logo: "font-logo text-[1.35rem] font-bold leading-none tracking-[0.16em] uppercase text-foreground",
   logoSub:
-    "font-heading text-[10px] font-semibold tracking-[0.22em] text-tactical-gray uppercase",
+    "font-heading text-[10px] font-semibold tracking-[0.2em] text-steel uppercase",
   sectionLabel:
-    "font-heading text-[11px] font-bold tracking-[0.18em] text-olive-bright uppercase",
+    "font-heading text-[11px] font-bold tracking-[0.16em] text-sage-light uppercase",
   categoryLabel:
-    "font-heading text-[10px] font-semibold tracking-[0.12em] text-tactical-gray uppercase",
+    "font-heading text-[10px] font-semibold tracking-[0.1em] text-steel uppercase",
   title: "font-heading text-sm font-bold tracking-tight text-foreground",
   titleAccent:
-    "font-heading text-sm font-bold tracking-[0.1em] text-olive-bright uppercase",
+    "font-heading text-sm font-bold tracking-[0.08em] text-sage-light uppercase",
   body: "text-sm font-normal leading-relaxed text-foreground",
   bodySmall: "text-xs font-normal leading-snug text-foreground",
   bodyMuted: "text-sm leading-relaxed text-muted-foreground",
   bodyMutedSmall: "text-xs leading-snug text-muted-foreground",
-  bodyDim: "text-xs leading-snug text-tactical-gray",
+  bodyDim: "text-xs leading-snug text-steel",
   caption: "text-[10px] font-medium tracking-wide text-muted-foreground",
-  monoMeta: "font-mono text-[10px] tracking-wide text-tactical-gray",
-  accentValue: "font-mono text-xs font-semibold tabular-nums text-olive-bright",
+  monoMeta: "font-mono text-[10px] tracking-wide text-steel",
+  accentValue: "font-mono text-xs font-semibold tabular-nums text-sage-light",
   accentValueLg:
-    "font-mono text-2xl font-bold tabular-nums tracking-tight text-olive-bright",
+    "font-mono text-2xl font-bold tabular-nums tracking-tight text-sage-light",
   accentHeading:
-    "font-heading text-sm font-bold tracking-[0.14em] text-olive-bright uppercase",
-  sandAccent: "font-heading text-tactical-sand font-semibold",
+    "font-heading text-sm font-bold tracking-[0.12em] text-sage-light uppercase",
+  sandAccent: "font-heading text-steel-light font-semibold",
 
-  /* ── Surfaces ── */
-  panel: "tactical-panel border-matte-border",
-  panelEdgeRight:
-    "absolute inset-y-0 right-0 w-px bg-matte-border-light/60",
-  panelEdgeLeft:
-    "absolute inset-y-0 left-0 w-px bg-matte-border-light/60",
+  panel: "tactical-panel border-charcoal-border",
+  panelEdgeRight: "absolute inset-y-0 right-0 w-px bg-charcoal-border-light/50",
+  panelEdgeLeft: "absolute inset-y-0 left-0 w-px bg-charcoal-border-light/50",
 
   badge:
-    "border border-matte-border-light bg-matte-raised font-heading text-[10px] font-semibold tracking-wide text-olive-bright",
+    "border border-charcoal-border-light bg-charcoal-raised font-heading text-[10px] font-semibold tracking-wide text-sage-light",
   badgeMuted:
-    "border border-matte-border bg-matte-raised font-heading text-[10px] font-semibold tracking-wide text-tactical-gray",
+    "border border-charcoal-border bg-charcoal-raised font-heading text-[10px] font-semibold tracking-wide text-steel",
 
   card: "tactical-card rounded-sm transition-colors duration-150",
   cardHover:
-    "hover:border-matte-border-light hover:bg-matte-raised active:scale-[0.99]",
-  cardActive:
-    "border-olive-dim/60 bg-olive-deep/20 shadow-tactical-active",
+    "hover:border-charcoal-border-light hover:bg-charcoal-panel active:scale-[0.99]",
+  cardActive: "border-sage-dim/50 bg-sage-dim/10 shadow-tactical-active",
 
   iconBtn:
-    "font-sans text-muted-foreground hover:bg-matte-raised hover:text-olive-bright",
+    "font-sans text-muted-foreground hover:bg-charcoal-raised hover:text-sage-light",
   primaryBtn:
-    "font-heading font-semibold tracking-wide border border-olive-dim bg-olive-deep/40 text-olive-bright hover:bg-olive-deep/60 hover:border-olive-bright/50",
+    "font-heading font-semibold tracking-wide border border-sage-dim/50 bg-sage-dim/20 text-sage-light hover:bg-sage-dim/30 hover:border-sage/40",
   outlineBtn:
-    "font-heading font-semibold tracking-wide border-matte-border-light bg-matte-raised text-tactical-gray hover:border-olive-dim/50 hover:text-olive-bright",
+    "font-heading font-semibold tracking-wide border-charcoal-border-light bg-charcoal-raised text-steel-light hover:border-steel-dim hover:text-foreground",
 
   statRow:
-    "tactical-card flex items-center justify-between rounded-sm px-3 py-2 transition-colors hover:border-matte-border-light hover:bg-matte-raised",
+    "tactical-card flex items-center justify-between rounded-sm px-3 py-2 transition-colors hover:border-charcoal-border-light hover:bg-charcoal-panel",
   emptyState:
-    "rounded-sm border border-dashed border-matte-border bg-matte-deep/50",
+    "rounded-sm border border-dashed border-charcoal-border bg-charcoal-deep/60",
 } as const;

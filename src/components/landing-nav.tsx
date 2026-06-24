@@ -11,7 +11,7 @@ function scrollTo(id: string) {
 
 export function LandingNav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-charcoal-border/80 bg-charcoal-black/90 backdrop-blur-sm">
+    <header className="sticky top-0 z-50 border-b border-charcoal-border bg-charcoal-black/95">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
         <Link href="/" className="flex items-center gap-3">
           <div className="flex size-9 items-center justify-center rounded border border-charcoal-border-light bg-charcoal-raised">

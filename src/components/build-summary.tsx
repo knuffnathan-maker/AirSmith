@@ -17,13 +17,13 @@ function StatRow({
   label,
   value,
   unit,
-  accent = "olive",
+  accent = "sage",
 }: {
   icon: React.ElementType;
   label: string;
   value: string | number;
   unit?: string;
-  accent?: "olive" | "gray";
+  accent?: "sage" | "steel";
 }) {
   return (
     <motion.div
@@ -36,14 +36,16 @@ function StatRow({
     >
       <div className="flex items-center gap-2 text-muted-foreground">
         <Icon
-          className={cn(
-            "size-3.5",
-            accent === "gray" ? "text-tactical-gray" : "text-olive-muted"
-          )}
+          className={cn("size-3.5", accent === "steel" ? "text-steel" : "text-sage")}
         />
         <span className={holo.bodySmall}>{label}</span>
       </div>
-      <span className={cn("text-xs font-medium", holo.accentValue)}>
+      <span
+        className={cn(
+          "text-xs font-medium font-mono tabular-nums",
+          accent === "steel" ? "text-accent-blue" : "text-sage-light"
+        )}
+      >
         {value}
         {unit && <span className="ml-0.5 text-muted-foreground">{unit}</span>}
       </span>
@@ -61,15 +63,15 @@ export function BuildSummary() {
       <div className={holo.panelEdgeLeft} />
 
       <motion.div
-        initial={{ opacity: 0, y: -8 }}
+        initial={{ opacity: 0, y: -6 }}
         animate={{ opacity: 1, y: 0 }}
         transition={holoSpring}
-        className="relative border-b border-matte-border px-4 py-3 bg-matte-raised"
+        className="relative border-b border-charcoal-border bg-charcoal-raised px-4 py-3"
       >
         <div className="absolute inset-x-0 bottom-0 panel-divider" />
         <div className="flex items-center justify-between">
           <h2 className={holo.sectionLabel}>
-            <span className="text-tactical-gray">{"// "}</span>Build Summary
+            <span className="text-steel">{"// "}</span>Build Summary
           </h2>
           <Badge variant="outline" className={holo.badge}>
             {stats.compatibility}% match
@@ -77,8 +79,8 @@ export function BuildSummary() {
         </div>
         <motion.p
           key={stats.totalCost}
-          initial={{ scale: 1.02, opacity: 0.8 }}
-          animate={{ scale: 1, opacity: 1 }}
+          initial={{ opacity: 0.85 }}
+          animate={{ opacity: 1 }}
           transition={holoSpring}
           className={cn("mt-2", holo.accentValueLg)}
         >
@@ -89,18 +91,18 @@ export function BuildSummary() {
 
       <div className="space-y-2 p-4">
         <StatRow icon={Package} label="Parts" value={stats.partCount} />
-        <StatRow icon={Shield} label="STL Models" value={stats.partCount} accent="gray" />
+        <StatRow icon={Shield} label="STL Models" value={stats.partCount} accent="steel" />
         <StatRow icon={Zap} label="Est. FPS" value={stats.estimatedFps} unit="fps" />
-        <StatRow icon={Gauge} label="Compatibility" value={`${stats.compatibility}%`} accent="gray" />
+        <StatRow icon={Gauge} label="Compatibility" value={`${stats.compatibility}%`} accent="steel" />
       </div>
 
       <div className="mx-4 panel-divider" />
 
       <div className="flex items-center justify-between px-4 pt-3 pb-2">
         <p className={holo.sectionLabel}>
-          <span className="text-tactical-gray">{"// "}</span>Installed Parts
+          <span className="text-steel">{"// "}</span>Installed Parts
         </p>
-        <DollarSign className="size-3 text-tactical-gray" />
+        <DollarSign className="size-3 text-steel" />
       </div>
 
       <ScrollArea className="flex-1 px-2 pb-4">
@@ -110,7 +112,7 @@ export function BuildSummary() {
             animate={{ opacity: 1 }}
             className={cn("mx-2 px-4 py-8 text-center", holo.emptyState)}
           >
-            <Package className="mx-auto mb-2 size-5 text-tactical-gray/40" />
+            <Package className="mx-auto mb-2 size-5 text-steel/35" />
             <p className={cn("text-xs", holo.bodyMuted)}>No parts added yet</p>
             <p className={cn("mt-1", holo.monoMeta)}>CLICK COMPONENT TO INSTALL</p>
           </motion.div>
@@ -125,10 +127,7 @@ export function BuildSummary() {
                 whileHover="hover"
                 whileTap="tap"
                 transition={holoSpring}
-                className={cn(
-                  "group flex items-start gap-2 rounded-sm border border-matte-border px-3 py-2.5",
-                  "bg-matte-raised"
-                )}
+                className="group flex items-start gap-2 rounded-sm border border-charcoal-border bg-charcoal-raised px-3 py-2.5"
               >
                 <div className="min-w-0 flex-1">
                   <Badge variant="secondary" className={cn("text-[9px] font-normal px-1.5 py-0", holo.badgeMuted)}>
@@ -159,7 +158,7 @@ export function BuildSummary() {
       {parts.length > 0 && (
         <motion.div
           layout
-          className="relative border-t border-matte-border p-4 bg-matte-raised"
+          className="relative border-t border-charcoal-border bg-charcoal-raised p-4"
         >
           <div className="absolute inset-x-0 top-0 panel-divider" />
           <div className="flex items-center justify-between text-xs">

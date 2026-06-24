@@ -10,25 +10,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        matte: {
-          black: "#080907",
-          void: "#0a0b09",
-          deep: "#0d0f0c",
-          panel: "#111310",
-          raised: "#161814",
-          border: "#2a2e26",
-          "border-light": "#3a3f36",
-        },
-        olive: {
-          DEFAULT: "#5c6b3a",
-          dim: "#4a5d32",
-          deep: "#3d4a2c",
-          bright: "#7a8f5a",
-          muted: "#6b7555",
-        },
         charcoal: {
           black: "#0a0b0a",
           void: "#0c0d0c",
+          deep: "#0e100e",
           panel: "#121413",
           raised: "#181a18",
           border: "#252826",
@@ -48,32 +33,52 @@ const config: Config = {
           blue: "#5c7a94",
           "blue-dim": "#4a6278",
         },
+        /* legacy aliases — builder imports */
+        matte: {
+          black: "#0a0b0a",
+          void: "#0c0d0c",
+          deep: "#0e100e",
+          panel: "#121413",
+          raised: "#181a18",
+          border: "#252826",
+          "border-light": "#333633",
+        },
+        olive: {
+          DEFAULT: "#6d7564",
+          dim: "#565e50",
+          deep: "#454c40",
+          bright: "#8a9480",
+          muted: "#6d7564",
+        },
         tactical: {
-          gray: "#8a8f85",
-          "gray-dim": "#5c5f58",
-          sand: "#9a9485",
+          gray: "#7a8289",
+          "gray-dim": "#4a5056",
+          sand: "#9aa3ab",
           steel: "#6e7368",
         },
       },
       backgroundImage: {
         "tactical-bg":
-          "linear-gradient(180deg, #0d0f0c 0%, #0a0b09 50%, #080907 100%)",
+          "linear-gradient(180deg, #0e100e 0%, #0c0d0c 50%, #0a0b0a 100%)",
         "hud-grid":
-          "linear-gradient(rgba(90, 100, 75, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(90, 100, 75, 0.06) 1px, transparent 1px)",
+          "linear-gradient(rgba(122, 130, 137, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(122, 130, 137, 0.06) 1px, transparent 1px)",
         "hud-grid-fine":
-          "linear-gradient(rgba(90, 100, 75, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(90, 100, 75, 0.04) 1px, transparent 1px)",
+          "linear-gradient(rgba(122, 130, 137, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(122, 130, 137, 0.05) 1px, transparent 1px)",
         "panel-divider":
-          "linear-gradient(90deg, transparent, rgba(90, 100, 75, 0.35) 50%, transparent)",
+          "linear-gradient(90deg, transparent, rgba(122, 130, 137, 0.25) 50%, transparent)",
+        "viewport-light":
+          "radial-gradient(ellipse 70% 50% at 50% 15%, rgba(154, 163, 171, 0.08) 0%, transparent 70%)",
       },
       backgroundSize: {
         grid: "32px 32px",
         "grid-fine": "16px 16px",
       },
       boxShadow: {
-        "tactical-sm": "0 1px 2px rgba(0, 0, 0, 0.4)",
-        tactical: "0 2px 8px rgba(0, 0, 0, 0.5)",
-        "tactical-inset": "inset 0 1px 0 rgba(255, 255, 255, 0.03)",
-        "tactical-active": "inset 0 0 0 1px rgba(122, 143, 90, 0.4)",
+        "tactical-sm": "0 1px 2px rgba(0, 0, 0, 0.45)",
+        tactical: "0 2px 6px rgba(0, 0, 0, 0.5)",
+        "tactical-inset": "inset 0 1px 0 rgba(255, 255, 255, 0.02)",
+        "tactical-active": "inset 0 0 0 1px rgba(138, 148, 128, 0.35)",
+        viewport: "inset 0 0 0 1px rgba(51, 54, 51, 0.8), 0 4px 24px rgba(0, 0, 0, 0.4)",
       },
     },
   },
@@ -81,34 +86,30 @@ const config: Config = {
     plugin(({ addUtilities }) => {
       addUtilities({
         ".tactical-panel": {
-          background: "#111310",
-          borderColor: "#2a2e26",
+          background: "#121413",
+          borderColor: "#252826",
         },
         ".tactical-card": {
-          background: "#161814",
-          border: "1px solid #2a2e26",
-        },
-        ".tactical-card-raised": {
-          background: "#1a1c18",
-          border: "1px solid #3a3f36",
+          background: "#181a18",
+          border: "1px solid #252826",
         },
         ".hud-grid": {
           backgroundImage:
-            "linear-gradient(rgba(90, 100, 75, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(90, 100, 75, 0.06) 1px, transparent 1px)",
+            "linear-gradient(rgba(122, 130, 137, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(122, 130, 137, 0.06) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         },
         ".hud-grid-fine": {
           backgroundImage:
-            "linear-gradient(rgba(90, 100, 75, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(90, 100, 75, 0.04) 1px, transparent 1px)",
+            "linear-gradient(rgba(122, 130, 137, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(122, 130, 137, 0.05) 1px, transparent 1px)",
           backgroundSize: "16px 16px",
         },
         ".panel-divider": {
           background:
-            "linear-gradient(90deg, transparent, rgba(90, 100, 75, 0.35) 50%, transparent)",
+            "linear-gradient(90deg, transparent, rgba(122, 130, 137, 0.25) 50%, transparent)",
           height: "1px",
         },
         ".hud-corner": {
-          borderColor: "rgba(122, 143, 90, 0.45)",
+          borderColor: "rgba(138, 148, 128, 0.4)",
         },
       });
     }),
