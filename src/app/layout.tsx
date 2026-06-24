@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist_Mono, Inter, Orbitron, Rajdhani } from "next/font/google";
+import { Geist_Mono, Inter, Rajdhani } from "next/font/google";
 
 import "./globals.css";
 
@@ -16,13 +16,6 @@ const rajdhani = Rajdhani({
   display: "swap",
 });
 
-const orbitron = Orbitron({
-  variable: "--font-orbitron",
-  subsets: ["latin"],
-  weight: ["700", "800", "900"],
-  display: "swap",
-});
-
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
@@ -30,9 +23,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AirSmith — Holographic Airsoft Mod Bench",
+  title: "AirSmith — Tactical Airsoft Mod Bench",
   description:
-    "Configure and visualize custom airsoft builds. Sign up for early access to the holographic 3D mod bench.",
+    "Configure and visualize custom airsoft builds. Sign up for early access to the tactical 3D mod bench.",
 };
 
 export default function RootLayout({
@@ -43,7 +36,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${rajdhani.variable} ${orbitron.variable} ${geistMono.variable} dark h-full antialiased`}
+      className={`${inter.variable} ${rajdhani.variable} ${geistMono.variable} dark h-full antialiased`}
     >
       <body className="min-h-full">{children}</body>
     </html>

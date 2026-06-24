@@ -37,9 +37,9 @@ export function LeftSidebar() {
 
       <div className="flex items-center justify-between px-4 pt-4 pb-2">
         <p className={holo.sectionLabel}>
-          <span className="text-holo-purple/60">{"// "}</span>Parts Library
+          <span className="text-tactical-gray">{"// "}</span>Parts Library
         </p>
-        <Badge variant="secondary" className={cn("text-[10px] font-normal", holo.badge)}>
+        <Badge variant="secondary" className={cn("text-[10px] font-normal", holo.badgeMuted)}>
           {loading ? "..." : `${catalogParts.length} parts`}
         </Badge>
       </div>
@@ -100,28 +100,28 @@ function PartCard({
       whileTap={inBuild ? undefined : "tap"}
       transition={holoSpring}
       className={cn(
-        "group relative flex w-full items-start gap-2 overflow-hidden rounded-lg border px-3 py-2.5 text-left backdrop-blur-card",
+        "group relative flex w-full items-start gap-2 overflow-hidden rounded-sm border px-3 py-2.5 text-left",
         inBuild
-          ? "cursor-default border-neon/40 bg-neon/10"
-          : cn(holo.card, "cursor-pointer border-neon/15")
+          ? "cursor-default border-olive-dim/50 bg-olive-deep/15"
+          : cn(holo.card, "cursor-pointer border-matte-border", holo.cardHover)
       )}
     >
       {!inBuild && (
-        <span className="absolute inset-y-0 left-0 w-0.5 scale-y-0 bg-gradient-to-b from-neon via-holo-electric to-holo-purple transition-transform duration-200 group-hover:scale-y-100" />
+        <span className="absolute inset-y-0 left-0 w-0.5 scale-y-0 bg-olive-bright transition-transform duration-200 group-hover:scale-y-100" />
       )}
       <div className="min-w-0 flex-1">
         <p className="truncate font-heading text-xs font-semibold tracking-wide text-foreground">
           {part.name}
         </p>
         <p className={cn("line-clamp-2", holo.bodyMutedSmall)}>{part.durability_note}</p>
-        <p className={cn("mt-1", holo.neonValue)}>${part.estimated_price.toFixed(2)}</p>
+        <p className={cn("mt-1", holo.accentValue)}>${part.estimated_price.toFixed(2)}</p>
       </div>
       <span
         className={cn(
-          "flex size-6 shrink-0 items-center justify-center rounded-md border transition-colors duration-200",
+          "flex size-6 shrink-0 items-center justify-center rounded-sm border transition-colors duration-150",
           inBuild
-            ? "border-neon/40 bg-neon/12 text-neon shadow-neon-sm"
-            : "border-neon/15 bg-neon/5 text-muted-foreground group-hover:border-neon/40 group-hover:text-neon"
+            ? "border-olive-dim/50 bg-olive-deep/30 text-olive-bright"
+            : "border-matte-border bg-matte-raised text-muted-foreground group-hover:border-olive-dim/40 group-hover:text-olive-bright"
         )}
       >
         {inBuild ? <Check className="size-3" /> : <Plus className="size-3" />}

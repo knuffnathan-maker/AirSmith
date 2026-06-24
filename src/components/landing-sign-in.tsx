@@ -51,14 +51,14 @@ export function LandingSignIn({ authError }: LandingSignInProps) {
 
   if (status === "sent") {
     return (
-      <div className={cn("glass-card rounded-xl p-6 text-center", holo.panel)}>
-        <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-full border border-neon/40 bg-neon/10">
-          <Mail className="size-5 text-neon" />
+      <div className={cn("tactical-card rounded-sm p-6 text-center", holo.panel)}>
+        <div className="mx-auto mb-4 flex size-12 items-center justify-center rounded-sm border border-matte-border-light bg-matte-raised">
+          <Mail className="size-5 text-olive-bright" />
         </div>
-        <p className={holo.neonHeading}>Check your inbox</p>
+        <p className={holo.accentHeading}>Check your inbox</p>
         <p className={cn("mt-3", holo.bodyMuted)}>
           We sent a sign-in link to{" "}
-          <span className="font-medium text-neon">{email}</span>. Click it to
+          <span className="font-medium text-olive-bright">{email}</span>. Click it to
           confirm your spot — you&apos;ll land back here with a thank-you note.
         </p>
       </div>
@@ -66,7 +66,7 @@ export function LandingSignIn({ authError }: LandingSignInProps) {
   }
 
   return (
-    <div className={cn("glass-card rounded-xl p-6", holo.panel)}>
+    <div className={cn("tactical-card rounded-sm p-6", holo.panel)}>
       <p className={holo.sectionLabel}>// Early access</p>
       <h2 className="mt-2 font-heading text-xl font-bold tracking-tight text-foreground">
         Want to participate?
@@ -77,7 +77,7 @@ export function LandingSignIn({ authError }: LandingSignInProps) {
       </p>
 
       {authError && (
-        <p className="mt-4 rounded-lg border border-destructive/30 bg-destructive/10 px-3 py-2 text-xs text-destructive">
+        <p className="mt-4 rounded-sm border border-destructive/30 bg-destructive/10 px-3 py-2 text-xs text-destructive">
           Sign-in link expired or was invalid. Request a new one below.
         </p>
       )}
@@ -96,9 +96,9 @@ export function LandingSignIn({ authError }: LandingSignInProps) {
           onChange={(e) => setEmail(e.target.value)}
           disabled={status === "loading"}
           className={cn(
-            "w-full rounded-lg border border-neon/25 bg-neon/[0.04] px-4 py-2.5",
+            "w-full rounded-sm border border-matte-border bg-matte-raised px-4 py-2.5",
             "font-sans text-sm text-foreground placeholder:text-muted-foreground",
-            "transition-colors focus:border-neon/50 focus:outline-none focus:ring-2 focus:ring-neon/20",
+            "transition-colors focus:border-olive-dim focus:outline-none focus:ring-1 focus:ring-olive-dim/40",
             "disabled:opacity-50"
           )}
         />

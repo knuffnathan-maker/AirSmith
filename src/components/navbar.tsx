@@ -1,4 +1,4 @@
-import { Download, FileJson, Share2, Zap } from "lucide-react";
+import { Crosshair, Download, FileJson, Share2 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { holo } from "@/lib/holo-styles";
@@ -8,23 +8,20 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "relative flex h-16 shrink-0 items-center justify-between border-b px-5",
-        holo.panel,
-        "glass-holo backdrop-blur-holo"
+        "relative flex h-14 shrink-0 items-center justify-between border-b px-5 shadow-tactical-sm",
+        holo.panel
       )}
     >
       <div className="absolute inset-x-0 bottom-0 panel-divider" />
 
       <div className="flex items-center gap-4">
-        <div className="relative flex size-10 items-center justify-center rounded-md border border-neon/40 bg-neon/10 neon-glow-btn animate-neon-pulse">
-          <Zap className="size-5 text-neon drop-shadow-neon" strokeWidth={2.5} />
-          <span className="absolute -inset-px rounded-md border border-neon/20" />
-          <span className="absolute -inset-1 rounded-lg bg-neon/10 blur-md" />
+        <div className="flex size-9 items-center justify-center rounded-sm border border-matte-border-light bg-matte-raised">
+          <Crosshair className="size-4 text-olive-bright" strokeWidth={2} />
         </div>
 
-        <div className="flex flex-col gap-1">
+        <div className="flex flex-col gap-0.5">
           <h1 className={holo.logo}>AirSmith</h1>
-          <p className={holo.logoSub}>Holographic 3D Mod Bench</p>
+          <p className={holo.logoSub}>Tactical Mod Bench v0.1</p>
         </div>
       </div>
 
@@ -33,7 +30,7 @@ export function Navbar() {
           <Share2 />
           Share Build
         </Button>
-        <div className="hidden h-5 w-px bg-gradient-to-b from-transparent via-neon/30 to-transparent sm:block" />
+        <div className="hidden h-5 w-px bg-matte-border sm:block" />
         <Button variant="outline" size="sm" className={holo.outlineBtn}>
           <FileJson />
           Export JSON

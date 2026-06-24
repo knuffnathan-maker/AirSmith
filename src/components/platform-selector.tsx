@@ -21,7 +21,7 @@ export function PlatformSelector() {
   return (
     <div className="p-4">
       <p className={cn("mb-3", holo.sectionLabel)}>
-        <span className="text-holo-purple/60">{"// "}</span>Platform Select
+        <span className="text-tactical-gray">{"// "}</span>Platform Select
       </p>
 
       {loading && (
@@ -48,25 +48,25 @@ export function PlatformSelector() {
               whileTap="tap"
               transition={holoSpring}
               className={cn(
-                "relative overflow-hidden rounded-lg border px-3 py-2.5 text-left backdrop-blur-card",
+                "relative overflow-hidden rounded-sm border px-3 py-2.5 text-left",
                 isActive
                   ? holo.cardActive
-                  : cn(holo.card, "border-neon/15 bg-neon/[0.03]")
+                  : cn(holo.card, "border-matte-border")
               )}
             >
               {isActive && (
                 <>
-                  <div className="pointer-events-none absolute inset-0 holo-shimmer opacity-70" />
-                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-neon/70 to-transparent" />
+                  <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-olive-bright/40" />
+                  <div className="pointer-events-none absolute inset-y-0 left-0 w-0.5 bg-olive-bright/60" />
                 </>
               )}
               {isActive && (
-                <span className="absolute top-2 right-2 size-1.5 rounded-full bg-neon shadow-neon-sm animate-neon-pulse" />
+                <span className="absolute top-2 right-2 size-1.5 rounded-full bg-olive-bright" />
               )}
               <span
                 className={cn(
                   "relative block font-heading text-sm font-bold tracking-wide",
-                  isActive ? "text-neon neon-text-subtle" : "text-foreground"
+                  isActive ? "text-olive-bright" : "text-foreground"
                 )}
               >
                 {platform.name}
@@ -75,7 +75,7 @@ export function PlatformSelector() {
                 className={cn(
                   "relative mt-0.5 block",
                   holo.caption,
-                  isActive ? "text-neon/65" : holo.bodyDim
+                  isActive ? "text-olive-muted" : holo.bodyDim
                 )}
               >
                 {platform.description}

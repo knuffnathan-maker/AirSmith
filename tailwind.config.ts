@@ -10,184 +10,83 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        space: {
-          black: "#020308",
-          void: "#030508",
-          deep: "#050810",
-          panel: "rgba(6, 14, 24, 0.65)",
+        matte: {
+          black: "#080907",
+          void: "#0a0b09",
+          deep: "#0d0f0c",
+          panel: "#111310",
+          raised: "#161814",
+          border: "#2a2e26",
+          "border-light": "#3a3f36",
         },
-        neon: {
-          DEFAULT: "#00f0ff",
-          dim: "#00bfff",
-          deep: "#0088ff",
-          glow: "rgba(0, 240, 255, 0.5)",
+        olive: {
+          DEFAULT: "#5c6b3a",
+          dim: "#4a5d32",
+          deep: "#3d4a2c",
+          bright: "#7a8f5a",
+          muted: "#6b7555",
         },
-        holo: {
-          cyan: "#00f0ff",
-          blue: "#00bfff",
-          electric: "#0088ff",
-          purple: "#8b5cf6",
-          "purple-dim": "#6366f1",
-          magenta: "#c026d3",
-          violet: "#7c3aed",
+        tactical: {
+          gray: "#8a8f85",
+          "gray-dim": "#5c5f58",
+          sand: "#9a9485",
+          steel: "#6e7368",
         },
       },
       backgroundImage: {
-        "holo-bg":
-          "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,240,255,0.06) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 100%, rgba(139,92,246,0.05) 0%, transparent 50%), #030508",
-        "holo-grid":
-          "linear-gradient(rgba(0,240,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,240,255,0.04) 1px, transparent 1px)",
-        "holo-grid-fine":
-          "linear-gradient(rgba(0,240,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0,240,255,0.025) 1px, transparent 1px)",
-        "holo-shimmer":
-          "linear-gradient(135deg, rgba(0,240,255,0) 0%, rgba(0,240,255,0.06) 50%, rgba(139,92,246,0.04) 75%, rgba(0,240,255,0) 100%)",
+        "tactical-bg":
+          "linear-gradient(180deg, #0d0f0c 0%, #0a0b09 50%, #080907 100%)",
+        "hud-grid":
+          "linear-gradient(rgba(90, 100, 75, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(90, 100, 75, 0.06) 1px, transparent 1px)",
+        "hud-grid-fine":
+          "linear-gradient(rgba(90, 100, 75, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(90, 100, 75, 0.04) 1px, transparent 1px)",
         "panel-divider":
-          "linear-gradient(90deg, transparent, rgba(0,240,255,0.4) 40%, rgba(139,92,246,0.3) 60%, transparent)",
-        "neon-gradient": "linear-gradient(135deg, #00f0ff 0%, #0088ff 50%, #8b5cf6 100%)",
+          "linear-gradient(90deg, transparent, rgba(90, 100, 75, 0.35) 50%, transparent)",
       },
       backgroundSize: {
         grid: "32px 32px",
         "grid-fine": "16px 16px",
       },
-      backdropBlur: {
-        glass: "16px",
-        card: "8px",
-        holo: "20px",
-      },
       boxShadow: {
-        "neon-xs": "0 0 6px rgba(0, 240, 255, 0.2)",
-        "neon-sm": "0 0 10px rgba(0, 240, 255, 0.25)",
-        neon: "0 0 20px rgba(0, 240, 255, 0.35)",
-        "neon-lg":
-          "0 0 40px rgba(0, 240, 255, 0.2), 0 0 80px rgba(0, 191, 255, 0.1)",
-        "neon-xl":
-          "0 0 60px rgba(0, 240, 255, 0.25), 0 0 120px rgba(0, 136, 255, 0.15)",
-        "neon-purple": "0 0 20px rgba(139, 92, 246, 0.35)",
-        "neon-purple-lg": "0 0 40px rgba(139, 92, 246, 0.2)",
-        "neon-active":
-          "inset 0 0 30px rgba(0, 240, 255, 0.08), 0 0 20px rgba(0, 240, 255, 0.25), 0 0 40px rgba(0, 191, 255, 0.1)",
-        "neon-inset": "inset 0 0 20px rgba(0, 240, 255, 0.08)",
-        "glass-glow":
-          "inset 0 0 20px rgba(0, 240, 255, 0.03), 0 0 15px rgba(0, 240, 255, 0.08)",
-      },
-      dropShadow: {
-        neon: "0 0 12px rgba(0, 240, 255, 0.6)",
-        "neon-sm": "0 0 8px rgba(0, 240, 255, 0.4)",
-      },
-      animation: {
-        "neon-pulse": "neon-pulse 2s ease-in-out infinite",
-        "holo-flicker": "holo-flicker 4s linear infinite",
-      },
-      keyframes: {
-        "neon-pulse": {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.7" },
-        },
-        "holo-flicker": {
-          "0%, 100%": { opacity: "1" },
-          "92%": { opacity: "1" },
-          "93%": { opacity: "0.85" },
-          "94%": { opacity: "1" },
-          "96%": { opacity: "0.9" },
-          "97%": { opacity: "1" },
-        },
+        "tactical-sm": "0 1px 2px rgba(0, 0, 0, 0.4)",
+        tactical: "0 2px 8px rgba(0, 0, 0, 0.5)",
+        "tactical-inset": "inset 0 1px 0 rgba(255, 255, 255, 0.03)",
+        "tactical-active": "inset 0 0 0 1px rgba(122, 143, 90, 0.4)",
       },
     },
   },
   plugins: [
-    plugin(({ addUtilities, addComponents }) => {
+    plugin(({ addUtilities }) => {
       addUtilities({
-        /* ── Glassmorphism ── */
-        ".glass-panel": {
-          background: "rgba(6, 14, 24, 0.55)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
-          borderColor: "rgba(0, 240, 255, 0.15)",
+        ".tactical-panel": {
+          background: "#111310",
+          borderColor: "#2a2e26",
         },
-        ".glass-card": {
-          background: "rgba(0, 240, 255, 0.03)",
-          backdropFilter: "blur(8px)",
-          WebkitBackdropFilter: "blur(8px)",
-          border: "1px solid rgba(0, 240, 255, 0.12)",
+        ".tactical-card": {
+          background: "#161814",
+          border: "1px solid #2a2e26",
         },
-        ".glass-holo": {
-          background:
-            "linear-gradient(135deg, rgba(0,240,255,0.04) 0%, rgba(139,92,246,0.04) 100%)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(20px)",
-          border: "1px solid rgba(0, 240, 255, 0.15)",
+        ".tactical-card-raised": {
+          background: "#1a1c18",
+          border: "1px solid #3a3f36",
         },
-
-        /* ── Neon glow ── */
-        ".neon-text": {
-          color: "#00f0ff",
-          textShadow:
-            "0 0 10px rgba(0, 240, 255, 0.6), 0 0 20px rgba(0, 240, 255, 0.3)",
-        },
-        ".neon-text-subtle": {
-          textShadow: "0 0 8px rgba(0, 240, 255, 0.3)",
-        },
-        ".neon-text-purple": {
-          color: "#8b5cf6",
-          textShadow:
-            "0 0 10px rgba(139, 92, 246, 0.6), 0 0 20px rgba(139, 92, 246, 0.3)",
-        },
-        ".neon-border": {
-          borderColor: "rgba(0, 240, 255, 0.3)",
-          boxShadow:
-            "inset 0 0 20px rgba(0, 240, 255, 0.03), 0 0 15px rgba(0, 240, 255, 0.08)",
-        },
-        ".neon-border-active": {
-          borderColor: "rgba(0, 240, 255, 0.6)",
-          boxShadow:
-            "inset 0 0 30px rgba(0, 240, 255, 0.08), 0 0 20px rgba(0, 240, 255, 0.25), 0 0 40px rgba(0, 191, 255, 0.1)",
-        },
-        ".neon-glow-btn": {
-          boxShadow:
-            "0 0 15px rgba(0, 240, 255, 0.3), inset 0 0 10px rgba(0, 240, 255, 0.1)",
-        },
-        ".neon-glow-purple": {
-          boxShadow: "0 0 20px rgba(139, 92, 246, 0.3)",
-        },
-
-        /* ── Holographic backgrounds ── */
-        ".holo-bg": {
-          background:
-            "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,240,255,0.06) 0%, transparent 60%), radial-gradient(ellipse 60% 40% at 80% 100%, rgba(139,92,246,0.05) 0%, transparent 50%), #030508",
-        },
-        ".holo-grid": {
+        ".hud-grid": {
           backgroundImage:
-            "linear-gradient(rgba(0,240,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,240,255,0.04) 1px, transparent 1px)",
+            "linear-gradient(rgba(90, 100, 75, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(90, 100, 75, 0.06) 1px, transparent 1px)",
           backgroundSize: "32px 32px",
         },
-        ".holo-grid-fine": {
+        ".hud-grid-fine": {
           backgroundImage:
-            "linear-gradient(rgba(0,240,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(0,240,255,0.025) 1px, transparent 1px)",
+            "linear-gradient(rgba(90, 100, 75, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(90, 100, 75, 0.04) 1px, transparent 1px)",
           backgroundSize: "16px 16px",
-        },
-        ".holo-shimmer": {
-          background:
-            "linear-gradient(135deg, rgba(0,240,255,0) 0%, rgba(0,240,255,0.06) 50%, rgba(139,92,246,0.04) 75%, rgba(0,240,255,0) 100%)",
         },
         ".panel-divider": {
           background:
-            "linear-gradient(90deg, transparent, rgba(0,240,255,0.4) 40%, rgba(139,92,246,0.3) 60%, transparent)",
+            "linear-gradient(90deg, transparent, rgba(90, 100, 75, 0.35) 50%, transparent)",
           height: "1px",
         },
-      });
-
-      addComponents({
-        ".holo-scanlines": {
-          position: "relative",
-          "&::after": {
-            content: '""',
-            position: "absolute",
-            inset: "0",
-            background:
-              "repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,240,255,0.015) 2px, rgba(0,240,255,0.015) 4px)",
-            pointerEvents: "none",
-            zIndex: "1",
-          },
+        ".hud-corner": {
+          borderColor: "rgba(122, 143, 90, 0.45)",
         },
       });
     }),

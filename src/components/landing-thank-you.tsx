@@ -23,10 +23,10 @@ export function LandingThankYou({ email }: LandingThankYouProps) {
   }
 
   return (
-    <div className={cn("glass-card rounded-xl p-6", holo.panel)}>
+    <div className={cn("tactical-card rounded-sm p-6", holo.panel)}>
       <div className="flex items-start gap-4">
-        <div className="flex size-12 shrink-0 items-center justify-center rounded-full border border-neon/40 bg-neon/10 neon-glow-btn">
-          <CheckCircle2 className="size-6 text-neon" />
+        <div className="flex size-12 shrink-0 items-center justify-center rounded-sm border border-olive-dim/50 bg-olive-deep/20">
+          <CheckCircle2 className="size-6 text-olive-bright" />
         </div>
         <div className="min-w-0 flex-1">
           <p className={holo.sectionLabel}>// You&apos;re on the list</p>
@@ -35,11 +35,11 @@ export function LandingThankYou({ email }: LandingThankYouProps) {
           </h2>
           <p className={cn("mt-3", holo.bodyMuted)}>
             Your registration at{" "}
-            <span className="font-medium text-neon">{email}</span> is recorded.
+            <span className="font-medium text-olive-bright">{email}</span> is recorded.
             That single step tells me who would{" "}
-            <span className="text-foreground">really</span> want a holographic
-            airsoft mod bench — not just curious clicks, but people willing to
-            put their name on it.
+            <span className="text-foreground">really</span> want a tactical airsoft
+            mod bench — not just curious clicks, but people willing to put their name
+            on it.
           </p>
           <p className={cn("mt-3", holo.bodyMutedSmall)}>
             I use this list to prioritize features, gauge demand, and reach out
@@ -53,7 +53,7 @@ export function LandingThankYou({ email }: LandingThankYouProps) {
         <Link
           href="/builder"
           className={cn(
-            "inline-flex h-7 items-center gap-1 rounded-[min(var(--radius-md),12px)] px-2.5 text-[0.8rem]",
+            "inline-flex h-7 items-center gap-1 rounded-sm px-2.5 text-[0.8rem]",
             holo.primaryBtn
           )}
         >
